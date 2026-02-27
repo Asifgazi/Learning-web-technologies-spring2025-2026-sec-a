@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assingment Form</title>
+</head>
+<body>
+
+
+
+    <h2>Assingment Form</h2>
+
+    <form onsubmit="return validateForm()"
+    style="border:2px solid black; width: 450px;padding: 15px;">
+
+
+    Name :
+    <input type="text" name="" id="name"> <br><br>
+
+    Email:
+    <input type="text" name="" id="email"><br><br>
+
+    Gender :
+    <input type="radio" name="gender" id="male">Male
+    <input type="radio" name="gender" id="female">Female
+    <input type="radio" name="gender" id="other"> Other
+
+    <br> <br>
+
+    Date Of Birth :
+    <input type="number" name="" id="day" style="width: 60px;">
+    <input type="number" name="" id="month" style="width: 60px;">
+    <input type="number" name="" id="year" style="width: 80px;">
+    <br><br>
+
+    Blood Group:
+    <select name="" id="blood">
+        <option value="">Select</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>O+</option>
+        <option>O-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+
+
+
+
+
+    </select>
+
+    <br> <br>
+
+    Degree:
+    <input type="checkbox" name="" id="ssc">SSC
+    <input type="checkbox" name="" id="hsc">HSC
+    <input type="checkbox" name="" id="bsc">BSc
+    <input type="checkbox" name="" id="msc">MSc
+
+    User ID:
+
+    <input type="number" name="" id="userid"> <br><br>
+
+    Profile Picture:
+
+    <input type="file" name="" id="photo"> <br> <br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+    <script>
+        function validateForm() {
+
+            let name = document.getElementById("name").value.trim();
+
+
+            if (name=== "") {
+
+                alert("Name cannot be empty");
+
+                return false;
+
+
+
+            }
+
+            let words = name.split(/\s+/);
+            if (words.length < 2) {
+
+                alert("Name must contain at least  two words");
+                return false;
+            }
+
+
+            let   nameRegex = /^[A-Za-z][A-Za-z.\- ]*$/;
+            if (!nameRegex.test(name)) {
+
+            alert("Name must start with a letter and contain letters, dot(.) or dash(-)");
+
+            return false;
+         
+
+
+
+
+            }
+
+            let email = document.getElementById("email").value.trim();
+
+            if (email === "") {
+
+                alert("Email cannot be empty");
+
+                return false;
+
+
+
+
+            }
+
+
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+
+                alert ("Invalid email format (xyz@gmail.com)");
+                return false;
+
+
+
+
+
+
+
+        }
+
+        let male = document.getElementById("male");
+        let female = document.getElementById("female");
+        let other = document.getElementById("other");
+
+        if (!male.checked && !female.checked && !other.checked) {
+
+            alert ("At least one gender must be selected");
+            return false;
+
+
+
+        }
+
+        let day = document.getElementById("day").value;
+        let  month = document.getElementById("month").value;
+        let year = document.getElementById("year").value;
+
+
+         if (day === "" || month === "" || year === "") {
+
+                     alert("Date fields cannot be empty");
+
+                     return false;
+
+
+
+
+         }
+
+
+
+          if (day < 1 || day > 31) {
+
+             alert("Day must be between 1 and 31");
+
+             return false;
+
+          }
+
+           if (month < 1 || month > 12) {
+
+
+                    alert("Month must be between 1 and 12");
+
+                     return false;
+
+           }
+
+
+
+           if (year < 1900 || year > 2016) {
+
+                    alert("Year must be between 1900 and 2016");
+
+                     return false;
+
+       
+    }
+
+
+    let blood = document.getElementById("blood").value;
+
+    if (blood === "") {
+
+        alert("Blood group  must be selected");
+
+        return false;
+
+
+
+    }
+
+    let ssc = document.getElementById("ssc");
+
+    let hsc = document.getElementById("hsc");
+
+      let bsc = document.getElementById("bsc");
+
+       let msc = document.getElementById("msc");
+
+
+       if (!ssc.checked && !hsc.checked && !bsc.checked && !msc.checked) {
+
+        alert("At least one degree must be selected");
+
+        return false;
+
+       }
+
+        let userid = document.getElementById("userid").value;
+
+         if (userid === "" || userid <= 0) {
+
+            alert("User ID must be a positive number");
+            return false;
+         }
+
+         let photo = document.getElementById("photo").value;
+
+         if (photo === "") {
+
+            alert("profile picture cannot be empty");
+            
+            return false;
+
+
+
+
+         }
+
+         return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+       
+        
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

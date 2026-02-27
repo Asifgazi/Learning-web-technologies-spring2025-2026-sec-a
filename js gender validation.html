@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender validation</title>
+</head>
+<body>
+
+    <h3>gender validation</h3>
+
+    <form onsubmit="return validategender()">
+
+
+        <input type="radio" name="Gender" id="Male"> Male
+        <input type="radio" name="Gender" id="Female"> Female
+        <input type="radio" name="Gender" id="Other"> Other
+
+
+        <br> <br>
+        <input type="submit" value="Submit">
+
+
+
+
+
+
+    </form>
+
+
+
+    <script>
+        function validategender() {
+            let male = document.getElementById("Male");
+            let female = document.getElementById("Female");
+            let other = document.getElementById("Other");
+
+            if (!male.checked && ! female.checked && !other.checked){
+               alert("At least one gender must be selected");
+
+        return false;
+                
+
+
+
+
+            }
+            return true;
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
