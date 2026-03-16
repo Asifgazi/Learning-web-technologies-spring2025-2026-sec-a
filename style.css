@@ -1,26 +1,32 @@
-body{
-    font-family: Arial;
-    text-align: center;
-}
-
-.board{
-    width: 300px;
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-}
-
-.cell{
+div{
+    background-color: yellow; 
     width: 100px;
     height: 100px;
-    border: 2px solid black;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+     /* margin: 10px 20px 30px 40px; */
+    /* padding: 10px; */
+    /* padding: 10px 20px 30px 40px; */
 }
 
-.winner{
-    background: lightgreen;
+#d1{
+    background-color: red; 
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 110px;
+    top: 50px;
+    border-radius: 100%;
+
+}
+
+#d2{
+    background-color: green; 
+    width: 300px;
+    height: 200px;
+    position: relative;
+}
+
+.c1{
+    background-color: whitesmoke; 
+    width: 200px;
+    padding: 10px;
 }
