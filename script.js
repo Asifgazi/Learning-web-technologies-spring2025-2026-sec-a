@@ -1,28 +1,61 @@
-let unitPrice = 1000;
+function insert(){
 
-let quantityField = document.getElementById('quantityField');
-let totalPrice = document.getElementById('totalPrice');
-let message = document.getElementById('message');
+    let name = document.getElementById('name').value;
+    let company = document.getElementById('company').value;
+    let contact = document.getElementById('contact').value;
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
 
-quantityField.addEventListener('input', function(){
+    let data = {
+        'action': 'insert',
+        'name': name,
+        'company': company,
+        'contact': contact,
+        'username': username,
+        'password': password
+    };
 
-    let quantity = parseInt(quantityField.value);
+    let user = JSON.stringify(data);
 
-    if(quantity < 0){
-        quantityField.value = 0;
-        message.innerHTML = "Quantity cannot be negative";
-        message.style.color = "red";
-        quantity = 0;
-    }else{
-        message.innerHTML = "";
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('post', 'controller.php', true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('data='+user);
+
+    xhttp.onreadystatechange = function (){
+        if(this.readyState == 4 && this.status == 200){
+            document.getElementById('head').innerHTML = this.responseText;
+        }
     }
+}
 
-    let total = unitPrice * quantity;
+function search(){
 
-    totalPrice.value = total;
+    let username = document.getElementById('username').value;
 
-    if(total > 1000){
-        alert("You are eligible for gift coupon");
+    let data = {
+        'action': 'search',
+        'username': username
+    };
+
+    let user = JSON.stringify(data);
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open('post', 'controller.php', true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send('data='+user);
+
+    xhttp.onreadystatechange = function (){
+        if(this.readyState == 4 && this.status == 200){
+
+            let users = JSON.parse(this.responseText);
+
+            let output = "";
+            for(let i=0; i<users.length; i++){
+                output += users[i].employer_name + " - " + users[i].company_name + "<br>";
+            }
+
+            document.getElementById('result').innerHTML = output;
+        }
     }
-
-});
+}
